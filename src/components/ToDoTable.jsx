@@ -1,32 +1,56 @@
 import React from "react";
+import {
+  Button,
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableRow,
+} from "@mui/material";
 
-const ToDoTable = ({data}) => {
-    return(
-        <table>
-            <thead>
-                <tr>
-                    <th>ToDo Id</th>
-                    <th>ToDo Name</th>
-                    <th>ToDo Status</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody>
-                {data.map((todo)=>{
-                    return(
-                        <>
-                            <tr key={todo.id}>
-                                <td>{todo.id}</td>
-                                <td>{todo.name}</td>
-                                <td>{todo.isCompleted ? "Selesai" : "Belum Selesai"}</td>
-                                <td>{todo.isCompleted ? "" : <button>Selesaikan</button>}</td>
-                            </tr>
-                        </>
-                    );
-                })}
-            </tbody>
-        </table>
-    );
+const ToDoTable = ({ data, fnCompleteTodo }) => {
+  //render
+  return (
+    <>
+      <Table sx={{ maxWidth: 700 }}>
+        <TableHead>
+          <TableRow>
+            <TableCell>ToDo Id</TableCell>
+            <TableCell>ToDo Name</TableCell>
+            <TableCell>ToDo Status</TableCell>
+            <TableCell>Action</TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {data.map((todo) => {
+            return (
+              <>
+                <TableRow key={todo.id}>
+                  <TableCell>{todo.id}</TableCell>
+                  <TableCell>{todo.name}</TableCell>
+                  <TableCell>
+                    {todo.isCompleted ? "Selesai" : "Belum Selesai"}
+                  </TableCell>
+                  <TableCell>
+                    {todo.isCompleted ? (
+                      ""
+                    ) : (
+                      <Button
+                        variant="outlined"
+                        onClick={() => fnCompleteTodo(todo.id)}
+                      >
+                        Selesaikan
+                      </Button>
+                    )}
+                  </TableCell>
+                </TableRow>
+              </>
+            );
+          })}
+        </TableBody>
+      </Table>
+    </>
+  );
 };
 
 export default ToDoTable;

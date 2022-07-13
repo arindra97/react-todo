@@ -5,7 +5,7 @@ import ToDo from "./containers/ToDo";
 
 function App() {
   return (
-    <div className="App">
+    <div className="App" style={{display:"flex", flexDirection:"column", alignItems:"center", marginTop:"2em"}}>
       <ToDo />
     </div>
   );

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
+import { TextField, Button } from "@mui/material";
 
-const ToDoForm = ({fnAddTodo}) => {
+const ToDoForm = ({ fnAddTodo }) => {
   const [inputData, setInputData] = useState("");
 
   // fungsi untuk perubahan input
@@ -16,18 +17,35 @@ const ToDoForm = ({fnAddTodo}) => {
 
   return (
     <>
-        <form style={{ margin: "0.5em 0em" }} onSubmit={formSubmitHandler}>
-            <input
-                type="text"
-                name="todo-baru"
-                id="toDoBaru"
-                placeholder="Input Kerjaan Baru"
-                style={{ marginRight: "0.5em" }}
-                value={inputData}
-                onChange={inputOnChangeHandler}
-            />
-            <button type="submit">Tambah Pekerjaan</button>
-        </form>
+      <form
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          justifyContent: "center",
+          alignItems: "center",
+          marginTop: "1em",
+        }}
+        onSubmit={formSubmitHandler}
+      >
+        <TextField
+          type="text"
+          name="todo-baru"
+          id="toDoBaru"
+          label="Input Kerjaan Baru"
+          variant="outlined"
+          size="small"
+          sx={{
+            maxWidth: 1000,
+            marginRight: "1em",
+            backgroundColor: "#ffffff40",
+          }}
+          value={inputData}
+          onChange={inputOnChangeHandler}
+        />
+        <Button variant="contained" size="small" type="submit">
+          Tambah Pekerjaan
+        </Button>
+      </form>
     </>
   );
 };
