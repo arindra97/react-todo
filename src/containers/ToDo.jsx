@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Typography } from "@mui/material";
 
 import ToDoForm from "../components/ToDoForm";
@@ -36,6 +36,19 @@ const ToDo = () => {
     });
     setTodos(newTodos);
   };
+
+  useEffect(
+    // effect
+    () => {
+      let titleTulisan = 'Todos : ' + todos[todos.length-1].name;
+      console.log(titleTulisan);
+      //DOM secara manual
+      document.title = titleTulisan;
+    },
+
+    // dependencyList untuk memanggil useEffect setiap value yang dipanggil
+    [todos]
+  );
 
   return (
     <>
