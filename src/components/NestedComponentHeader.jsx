@@ -20,6 +20,8 @@ const NestedComponentHeader = ({ children }) => {
       return <Typography variant="h5">{children}</Typography>;
     case 6:
       return <Typography variant="h6">{children}</Typography>;
+    default:
+      return <Typography>Level hanya 1-6</Typography>;
   }
 };
 
